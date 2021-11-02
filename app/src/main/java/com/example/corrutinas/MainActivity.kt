@@ -29,11 +29,12 @@ class MainActivity : AppCompatActivity() {
             progressBar.visibility = View.VISIBLE
             lifecycleScope.launch {
                 val listPerson = withContext(Dispatchers.IO) {
-                    Thread.sleep(5000)
+                    Thread.sleep(3000)
                     repository.getPersons()
                 }
                 for (persona in listPerson) {
-                    textViewPerson.append("Nombre: ${persona.name} ${persona.surname} | Edad: ${persona.edad} \n")
+                    textViewPerson.append("Nombre: ${persona.name} ${persona.surname} | Edad: ${persona.edad}" +
+                            "| Dirección: ${persona.direccion} \n\n")
                 }
                 progressBar.visibility = View.INVISIBLE
             }
